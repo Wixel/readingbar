@@ -42,12 +42,13 @@
         _ = $(this);
 
         var readHeight = _.outerHeight();
-        var startPoint = _.offset().top * 1.8;
+        var startPoint = _.offset().top * 1.65;
         var currentPos = 0;
 
             $(document).on('scroll', function(){
-              currentPos = (_.viewportOffset().top - startPoint) / readHeight * 100;
-              $('.read-bar').css('width', currentPos + '%');
+                readHeight = _.outerHeight();
+                currentPos = (_.viewportOffset().top - startPoint) / readHeight * 100;
+                $('.read-bar').css('width', currentPos + '%');
             });
           };
 }(jQuery));
