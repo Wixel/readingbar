@@ -49,6 +49,11 @@
                 readHeight = _.outerHeight();
                 currentPos = (_.viewportOffset().top - startPoint) / readHeight * 100;
                 $('.read-bar').css('width', currentPos + '%');
+                if (currentPos > 100) {
+                    $('.read-bar').css('opacity', '0');
+                }else{
+                    $('.read-bar').css('opacity', '1');
+                }
             });
           };
 }(jQuery));
