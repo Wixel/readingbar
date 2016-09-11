@@ -11,9 +11,10 @@ $('.article').readingbar();
 
 ### Options
 ``` js
-// you can set the height and the color of the bar.
+// you can set the text indicator, height and the color of the bar.
 $('.article').readingbar({
-  height: '10px',
-  backgroundColor: '#22252C'
+  counter:          false,
+  height:           '10px',
+  backgroundColor:  '#22252C'
 });
 ```
