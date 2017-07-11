@@ -4,6 +4,9 @@ A simple progress bar that indicates the length &amp; your current reading posit
 [Here's a demo](http://codepen.io/WixelHQ/pen/bNBzZx)
 
 ### Adding it to your site
+
+Install it using npm `npm install readingbar` or download the script file from the repo.
+
 ``` js
 // select the element you wish to track (ie. in a blog post target only the container of the actual post content)
 $('.article').readingbar();
