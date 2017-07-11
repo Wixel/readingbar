@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Wixel/readingbar/issues"
   },
-  "homepage": "https://github.com/Wixel/readingbar#readme"
+  "homepage": "https://github.com/Wixel/readingbar#readme",
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
 }
