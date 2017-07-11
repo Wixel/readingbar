@@ -21,3 +21,7 @@ $('.article').readingbar({
   backgroundColor:  '#22252C' // Color of the bar
 });
 ```
+
+#### Customize 
+
+You can add your own styles by adding properties to the following classes: `.read-bar` (bar) & `.read-text` (% text).
