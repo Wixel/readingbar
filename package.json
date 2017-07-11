@@ -1,0 +1,23 @@
+{
+  "name": "readingbar",
+  "version": "1.0.1",
+  "description": "A simple progress bar that indicates the length & your current reading position of an article/page",
+  "main": "jquery.readingbar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wixel/readingbar.git"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "author": "Nico van Zyl <nico@wixelhq.com> (http://nicovanzyl.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wixel/readingbar/issues"
+  },
+  "homepage": "https://github.com/Wixel/readingbar#readme"
+}
