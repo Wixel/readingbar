@@ -1,6 +1,6 @@
 {
   "name": "readingbar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple progress bar that indicates the length & your current reading position of an article/page",
   "main": "jquery.readingbar.js",
   "scripts": {
