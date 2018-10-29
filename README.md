@@ -19,7 +19,7 @@ $('.article').readingbar();
 // you can set the text indicator, height and the color of the bar.
 $('.article').readingbar({
   counter:          false, // Set to `true` if you want to display a % value for progress
-  height:           '10px', // Height of the bar
+  height:           10, // Height of the bar (in px)
   backgroundColor:  '#22252C' // Color of the bar
 });
 ```
