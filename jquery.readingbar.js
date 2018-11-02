@@ -30,37 +30,55 @@ var extend = function(out) {
     };
   };
   $.fn.readingbar = function(options) {
-    if (($('.read-bar').length > 0) === false) {
+    if (document.body.querySelector(".readingbar-bar") === null) {
+      // Default options
       var defaults = {
-        backgroundColor:  '#50E3C2',
-        height:           4,
-        counter:          true
+        backgroundColor: "#50E3C2",
+        height: 4,
+        counter: true
       };
-      settings = $.extend({}, defaults, options);
-      $('<div class="read-bar"></div>').appendTo('body');
-      $('.read-bar').css({
-        position: 'fixed',
-        bottom:   '0',
-        left:     '0',
-        width:    '0',
-        maxWidth: '100%',
-      });
-      $('.read-bar').css({
-        height:           settings.height + 'px',
-        backgroundColor:  settings.backgroundColor
-      });
-      if(settings.counter){
-        $('<span class="read-text"></span>').appendTo('body');
-        $('.read-text').css({
-          position:     'fixed',
-          bottom:       settings.height + 'px',
-          left:         '0',
-          width:        settings.height*10 + 'px',
-          marginLeft:   '-' + settings.height*10 + 'px',
-          textAlign:    'right',
-          color:        settings.backgroundColor,
-          fontSize:     settings.height*5 + 'px'
-        });
+
+      // Extend default and custom options
+      settings = extend({}, defaults, options);
+
+      // Create bar element
+      var barElement = document.createElement("div");
+
+      // Add styles
+      barElement.className = "readingbar-bar";
+      barElement.style.position = "fixed";
+      barElement.style.bottom = "0";
+      barElement.style.left = "0";
+      barElement.style.width = "0";
+      barElement.style.maxWidth = "100%";
+      barElement.style.height = settings.height + "px";
+      barElement.style.backgroundColor = settings.backgroundColor;
+
+      // Add bar to DOM
+      document.body.appendChild(barElement);
+
+      // Create text counter if enabled
+      if (settings.counter) {
+        // Create text element
+        var counterElement = document.createElement("span");
+
+        // Add styles
+        counterElement.className = "read-text";
+        counterElement.style.position = "fixed";
+        counterElement.style.bottom = settings.height + "px";
+        counterElement.style.left = "0";
+        counterElement.style.width = settings.height * 10 + "px";
+        counterElement.style.marginLeft = "-" + settings.height * 10 + "px";
+        counterElement.style.textAlign = "right";
+        counterElement.style.color = settings.backgroundColor;
+        if (settings.height < 5) {
+          counterElement.style.fontSize = settings.height * 5 + "px";
+        } else {
+          counterElement.style.fontSize = settings.height * 2.5 + "px";
+        }
+
+        // Add counter text to DOM
+        document.body.appendChild(counterElement);
       }
     }
     _ = $(this);
@@ -69,36 +87,45 @@ var extend = function(out) {
     var startPoint = _.offset().top * 1.65;
     var currentPos = 0;
 
-    $(document).on('scroll', function(){
+    $(document).on("scroll", function() {
       readHeight = _.outerHeight();
-      currentPos = (_.viewportOffset().top - startPoint) / readHeight * 100;
-      $('.read-bar').css('width', currentPos + '%');
-      $('.read-text').css('left', currentPos + '%');
+      currentPos = ((_.viewportOffset().top - startPoint) / readHeight) * 100;
+      $(".readingbar-bar").css("width", currentPos + "%");
+      $(".read-text").css("left", currentPos + "%");
       if (currentPos > 100) {
-        $('.read-bar, .read-text').css('opacity', '0');
-      }else{
-        $('.read-text').text(Math.round(currentPos) + '%');
-        $('.read-text').css({
-          opacity:    1,
-          bottom:     '0'
+        $(".readingbar-bar, .read-text").css("opacity", "0");
+      } else {
+        $(".read-text").text(Math.round(currentPos) + "%");
+        $(".read-text").css({
+          opacity: 1,
+          bottom: "0"
         });
-        $('.read-bar').css({
-          opacity:    1,
-          height:     settings.height + 'px'
+        $(".readingbar-bar").css({
+          opacity: 1,
+          height: settings.height + "px"
         });
-        clearTimeout($.data(this, 'scrollTimer'));
-        $.data(this, 'scrollTimer', setTimeout(function() {
-          $('.read-bar').animate({
-            opacity:  0.8,
-            height:   settings.height/2 + 'px'
-          }, 150);
-          $('.read-text').animate({
-            opacity:  0,
-            bottom:   '-' + settings.height*10 + 'px'
-          }, 140);
-
-        }, 250));
+        clearTimeout($.data(this, "scrollTimer"));
+        $.data(
+          this,
+          "scrollTimer",
+          setTimeout(function() {
+            $(".readingbar-bar").animate(
+              {
+                opacity: 0.8,
+                height: settings.height / 2 + "px"
+              },
+              150
+            );
+            $(".read-text").animate(
+              {
+                opacity: 0,
+                bottom: "-" + settings.height * 10 + "px"
+              },
+              140
+            );
+          }, 250)
+        );
       }
     });
   };
-}(jQuery));
+})(jQuery);
